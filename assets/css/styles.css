@@ -1,0 +1,333 @@
+/* styles.css */
+body {
+  font-family: 'Barlow', sans-serif;
+}
+
+.heading {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.green-line {
+  border: none;
+  height: 2.5px;
+  background-color: #2dc391; /* green color */
+  opacity: 0.7; /* slight transparency */
+  margin-bottom: 20px; /* space below the line */
+}
+
+h1 {
+  font-size: 35px;
+  font-family: 'Barlow', sans-serif;
+}
+
+h2 {
+  font-size: 30px;
+  font-family: 'Barlow', sans-serif;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  margin-left: 24px
+}
+
+.dashboard-header .bi-three-dots {
+  font-size: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  margin-right: 24px
+}
+
+.fixed-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #005a5ae7;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 100;
+  display: flex;
+  align-items: center; /* Vertically centers all children */
+  justify-content: center; /* Horizontally centers content */
+  padding: 4px 0;
+  box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.15);
+}
+
+.fixed-footer .bi {
+  font-size: 45px; /* Adjust size as needed */
+  margin: 0 25px;   /* Optional: space between icons */
+}
+
+.fixed-footer img {
+  width: 45px;         /* Set box width */
+  height: 45px;        /* Set box height */
+  padding: 7px;        /* Add space inside the box */
+  background: #fff;    /* Optional: background color */
+  border-radius: 8px;  /* Optional: rounded corners */
+  box-sizing: border-box;
+  margin: 0 25px;       /* Optional: space between icons/images */
+}
+.fixed-footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.fixed-footer .bi-house-door {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.fixed-footer a:hover {
+    color: #2dc391; /* Example hover color */
+}
+
+.fixed-footer a:hover img {
+    background: #2dc39128;    /* Optional: background color */
+    color: #2dc391; /* Example hover color */
+}
+
+.bubble-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Space between bubbles */
+    margin: 20px 0;
+}
+
+.bubble-box {
+    background: #fff;
+    box-shadow: 0 0px 10px 0 #009e5ae7;
+    border-radius: 16px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    font-family: 'Barlow', sans-serif;
+    padding: 16px;
+    flex: 1;                /* Take up available space */
+    min-width: 0;           /* Prevent overflow */
+    height: 100px;          /* Keep height fixed or adjust as needed */
+    margin: 0;              /* Remove individual margins */
+}
+
+.rectangular-box {
+    background: #fff;
+    box-shadow: 0 0px 10px 0 #009e5ae7;
+    border-radius: 16px;
+    flex: 1;
+    min-width: 0;
+    /* Remove or comment out the fixed height */
+    /* height: 210px; */
+    min-height: 40px; /* Optional: minimum height */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    font-family: 'Barlow', sans-serif;
+    padding: 16px;
+    margin: 0;
+}
+
+.rectangular-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spread items to edges */
+    width: 100%;
+    gap: 12px;
+}
+
+.rectangular-header h3 {
+    font-size: 1.5rem;      /* Adjust as needed */
+    flex: 1;                /* Allows the heading to take available space */
+    margin: 0;              /* Remove default margin */
+    white-space: nowrap;    /* Prevents wrapping */
+    overflow: hidden;       /* Hides overflow text */
+    text-overflow: ellipsis;/* Adds ... if text is too long */
+}
+
+.rectangular-action-btn {
+    background: #fff;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    padding: 10px 32px;         /* Bigger padding */
+    font-size: 1rem;          /* Slightly larger font */
+    font-family: 'Barlow', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 600;
+    min-width: 110px;           /* Ensures button width stays the same */
+    text-align: center;
+}
+
+.rectangular-action-btn.active {
+    background: #2dc391;
+    color: #fff;
+}
+
+.rectangular-header .bi {
+    font-size: 25px;     /* Adjust icon size as needed */
+}
+
+.rectangular-body {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.opening-time-columns {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.opening-time-columns > span {
+    min-width: 120px; /* Reserve space for label */
+    font-weight: 400;
+}
+
+.opening-time-columns > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.time-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* center vertically */
+    align-items: center;       /* center horizontally */
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    width: 100%;
+    height: 100%;              /* take full height of bubble-box */
+    text-align: center;
+}
+
+#clock {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#timezone {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 6px;
+}
+
+.power-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical center */
+    align-items: center;       /* horizontal center */
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+#battery-icon {
+    font-size: 4rem;   /* make icon bigger */
+    color: #2dc391;    /* green battery color */
+}
+
+#battery-percentage {
+    margin-top: 0px;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.rectangular-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px; /* space between status and graph */
+}
+
+/* Status block (wifi + temp stacked) */
+.status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.status-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.icon-label i {
+    font-size: 1.5rem;
+}
+
+/* Power flow block (label + chart stacked) */
+.powerflow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.graph-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+#currentGraph {
+    width: 220px;
+    height: 60px;
+    display: block;
+}
+
+.row-container {
+    display: flex;
+    justify-content: space-between;  /* left & right edges */
+    align-items: center;             /* vertical center */
+    gap: 20px;                       /* space between containers */
+    width: 100%;
+}
+
+/* Status block (Wi-Fi + Temperature stacked vertically) */
+.status-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;         /* vertically center inside row */
+}
+
+/* Power Flow block (label + graph stacked vertically) */
+.powerflow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* center label and graph horizontally */
+}
