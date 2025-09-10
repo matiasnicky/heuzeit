@@ -1,51 +1,128 @@
-/* styles.css */
+/* Barlow */
+@font-face {
+  font-family: 'Barlow';
+  src: url('../fonts/Barlow-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Barlow';
+  src: url('../fonts/Barlow-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Barlow Condensed */
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('../fonts/BarlowCondensed-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('../fonts/BarlowCondensed-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* General */
 body {
   font-family: 'Barlow', sans-serif;
 }
 
+/* Headings */
+h1 {
+  font-size: 40px;
+  font-family: 'Barlow', sans-serif;
+}
+h2 {
+  font-size: 35px;
+  font-family: 'Barlow', sans-serif;
+}
+h3 {
+  font-size: 30px;
+  font-family: 'Barlow', sans-serif;
+}
 .heading {
   font-family: 'Barlow Condensed', sans-serif;
 }
 
+/* Logo */
 .logo-container {
   text-align: center;
 }
 
-.green-line {
-  border: none;
-  height: 2.5px;
-  background-color: #2dc391; /* green color */
-  opacity: 0.7; /* slight transparency */
-  margin-bottom: 20px; /* space below the line */
+/* Notifications */
+.notification-container {
+  text-align: right;
+  margin: 12px 24px 0 0;
+  width: 100%;
 }
-
-h1 {
-  font-size: 35px;
-  font-family: 'Barlow', sans-serif;
+.notification-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 24px;
+  gap: 12px;
 }
-
-h2 {
-  font-size: 30px;
-  font-family: 'Barlow', sans-serif;
+.notification-right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
-
-.dashboard-header {
+.notification-left {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
-
-.dashboard-header h1 {
-  margin: 0;
-  margin-left: 24px
-}
-
-.dashboard-header .bi-three-dots {
-  font-size: 24px; /* Adjust size as needed */
+.notification-left .bi-exclamation-triangle {
+  color: red;
+  font-size: 24px;
   cursor: pointer;
-  margin-right: 24px
+  transition: transform 0.2s;
+  animation: blink 3s infinite;
+}
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+.notification-left .bi-exclamation-triangle:hover {
+  transform: scale(1.2);
 }
 
+/* Popup overlay */
+.error-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+.error-popup-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  width: 300px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.close-btn {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: #2dc391;
+}
+
+/* Footer */
 .fixed-footer {
   position: fixed;
   left: 0;
@@ -54,280 +131,421 @@ h2 {
   background: #005a5ae7;
   color: #fff;
   text-align: center;
-  padding: 10px 0;
-  z-index: 100;
   display: flex;
-  align-items: center; /* Vertically centers all children */
-  justify-content: center; /* Horizontally centers content */
+  align-items: center;
+  justify-content: center;
   padding: 4px 0;
+  z-index: 100;
   box-shadow: 0 -5px 8px rgba(0, 0, 0, 0.15);
 }
-
-.fixed-footer .bi {
-  font-size: 45px; /* Adjust size as needed */
-  margin: 0 25px;   /* Optional: space between icons */
-}
-
-.fixed-footer img {
-  width: 45px;         /* Set box width */
-  height: 45px;        /* Set box height */
-  padding: 7px;        /* Add space inside the box */
-  background: #fff;    /* Optional: background color */
-  border-radius: 8px;  /* Optional: rounded corners */
-  box-sizing: border-box;
-  margin: 0 25px;       /* Optional: space between icons/images */
-}
 .fixed-footer a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
-
-.fixed-footer .bi-house-door {
-    cursor: pointer;
-    transition: color 0.2s;
+.fixed-footer .bi {
+  font-size: 45px;
+  margin: 0 25px;
 }
-
+.fixed-footer img {
+  width: 45px;
+  height: 45px;
+  padding: 7px;
+  background: #fff;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 0 25px;
+}
 .fixed-footer a:hover {
-    color: #2dc391; /* Example hover color */
+  color: #2dc391;
 }
-
 .fixed-footer a:hover img {
-    background: #2dc39128;    /* Optional: background color */
-    color: #2dc391; /* Example hover color */
+  background: #2dc39128;
+  color: #2dc391;
 }
 
+/* Bubble Layout */
 .bubble-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px; /* Space between bubbles */
-    margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
 }
-
 .bubble-box {
-    background: #fff;
-    box-shadow: 0 0px 10px 0 #009e5ae7;
-    border-radius: 16px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size: 1.2rem;
-    font-family: 'Barlow', sans-serif;
-    padding: 16px;
-    flex: 1;                /* Take up available space */
-    min-width: 0;           /* Prevent overflow */
-    height: 100px;          /* Keep height fixed or adjust as needed */
-    margin: 0;              /* Remove individual margins */
+  background: #fff;
+  box-shadow: 0 0px 10px 0 #009e5ae7;
+  border-radius: 16px;
+  flex: 1;
+  min-width: 0;
+  height: 100px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px;
+  font-size: 1.2rem;
+  font-family: 'Barlow', sans-serif;
 }
 
+/* Rectangular Box */
 .rectangular-box {
-    background: #fff;
-    box-shadow: 0 0px 10px 0 #009e5ae7;
-    border-radius: 16px;
-    flex: 1;
-    min-width: 0;
-    /* Remove or comment out the fixed height */
-    /* height: 210px; */
-    min-height: 40px; /* Optional: minimum height */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size: 1.2rem;
-    font-family: 'Barlow', sans-serif;
-    padding: 16px;
-    margin: 0;
+  background: #fff;
+  box-shadow: 0 0px 10px 0 #009e5ae7;
+  border-radius: 16px;
+  flex: 1;
+  min-width: 0;
+  min-height: 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  font-size: 1.2rem;
+  font-family: 'Barlow', sans-serif;
 }
-
 .rectangular-header {
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Spread items to edges */
-    width: 100%;
-    gap: 12px;
+    align-items: center;      /* vertically center icon and heading */
+    justify-content: center;  /* horizontally center the header content */
+    gap: 8px;                 /* space between icon and heading */
 }
 
-.rectangular-header h3 {
-    font-size: 1.5rem;      /* Adjust as needed */
-    flex: 1;                /* Allows the heading to take available space */
-    margin: 0;              /* Remove default margin */
-    white-space: nowrap;    /* Prevents wrapping */
-    overflow: hidden;       /* Hides overflow text */
-    text-overflow: ellipsis;/* Adds ... if text is too long */
+.rectangular-header h3,
+.rectangular-header .bi-box {
+    margin: 0;               /* remove default margins */
+    font-size: 30px;         /* adjust size as needed */
 }
-
-.rectangular-action-btn {
-    background: #fff;
-    color: #333;
-    border: none;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    padding: 10px 32px;         /* Bigger padding */
-    font-size: 1rem;          /* Slightly larger font */
-    font-family: 'Barlow', sans-serif;
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    font-weight: 600;
-    min-width: 110px;           /* Ensures button width stays the same */
-    text-align: center;
-}
-
-.rectangular-action-btn.active {
-    background: #2dc391;
-    color: #fff;
-}
-
-.rectangular-header .bi {
-    font-size: 25px;     /* Adjust icon size as needed */
-}
-
+/* Rectangular Body */
 .rectangular-body {
-    margin-top: 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 1.1rem;
-    color: #333;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  font-size: 1.5rem;
+  color: #333;
+  align-items: center; /* centers the preset and total hours */
 }
 
-.opening-time-columns {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+/* Preset label */
+.preset {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
 }
 
-.opening-time-columns > span {
-    min-width: 120px; /* Reserve space for label */
-    font-weight: 400;
+/* Opening times container */
+.opening-times {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 250px; /* optional: limit width */
+  gap: 12px;
 }
 
-.opening-time-columns > div {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+/* Open/Close labels row */
+.time-labels {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  padding: 0 8px; /* slight horizontal padding */
 }
 
-.time-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   /* center vertically */
-    align-items: center;       /* center horizontally */
-    font-family: 'Barlow', sans-serif;
-    font-size: 1.4rem;
+/* Time values rows */
+.time-values {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 8px; /* align with labels */
+}
+
+/* Total hours at bottom */
+.total-hours {
+  font-weight: 600;
+  margin-top: 8px;
+  text-align: center;
+}
+
+/* Hay Rack Control Layout */
+.rack-control {
+    display: flex;             /* row layout */
+    flex-direction: row;       /* ensure horizontal layout */
+    align-items: center;       /* vertically center image + button */
+    justify-content: center;   /* center them in the box */
+    gap: 50px;                 /* space between image and button */
+}
+
+.rack-control img {
+    width: 100px;
+    height: auto;
+}
+
+.rack-control button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    background-color: #2dc391;
+    color: white;
     font-weight: 600;
-    color: #333;
-    width: 100%;
-    height: 100%;              /* take full height of bubble-box */
-    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-#clock {
-    font-size: 2rem;
-    font-weight: bold;
+.rack-control button:hover {
+    background-color: #28a07e;
 }
 
-#timezone {
-    font-size: 1rem;
-    color: #666;
-    margin-top: 6px;
+#toggleRackBtn {
+    padding: 20px 50px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 0px 8px rgba(45, 195, 145, 0.5); /* default green shadow */
+    color: #2dc391;      /* green text for "Open" */
+    background-color: white; /* Open state */
 }
 
-.power-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;   /* vertical center */
-    align-items: center;       /* horizontal center */
-    width: 100%;
-    height: 100%;
-    text-align: center;
+/* Close state */
+#toggleRackBtn.active {
+    background-color: #2dc391; /* green */
+    color: white;               /* text color white */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25); /* darker shadow optional */
+}
+
+.settings-header {
+  text-align: center;
+  margin: 0px 0 5px 0;
+}
+
+.settings-container {
+    font-weight: 600;
     font-size: 1.2rem;
-}
-
-#battery-icon {
-    font-size: 4rem;   /* make icon bigger */
-    color: #2dc391;    /* green battery color */
-}
-
-#battery-percentage {
-    margin-top: 0px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #333;
-}
-
-.rectangular-box {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px; /* space between status and graph */
-}
-
-/* Status block (wifi + temp stacked) */
-.status-container {
+    text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    flex: 1;
+    gap: 0;
+    padding-bottom: 80px; /* <-- add extra space equal or bigger than footer height */
 }
 
-.status-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+/* Full-width divider */
+.green-line {
+    height: 5px;
+    background-color: #00000075;
+    opacity: 0.3;
+    width: 100vw;
+    margin: 0; /* remove extra spacing */
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
 }
 
-.icon-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1.1rem;
-    color: #333;
+/* Setting item container */
+.setting-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
 }
 
-.icon-label i {
-    font-size: 1.5rem;
+/* Left side: icon + label */
+.setting-left {
+  display: flex;
+  align-items: center;
+  gap: 24px; /* space between icon and text */
 }
 
-/* Power flow block (label + chart stacked) */
-.powerflow-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
+.setting-left i {
+  font-size: 22px;
+  color: #000000; /* green icons */
 }
 
-.graph-label {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 6px;
-    text-align: center;
+.setting-left label {
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
-#currentGraph {
-    width: 220px;
-    height: 60px;
-    display: block;
+/* Select dropdown compact style */
+.setting-item select {
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  width: auto; /* only as wide as needed */
 }
 
-.row-container {
-    display: flex;
-    justify-content: space-between;  /* left & right edges */
-    align-items: center;             /* vertical center */
-    gap: 20px;                       /* space between containers */
-    width: 100%;
+/* Toggle switch style */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
 }
 
-/* Status block (Wi-Fi + Temperature stacked vertically) */
-.status-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    justify-content: center;         /* vertically center inside row */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
 
-/* Power Flow block (label + graph stacked vertically) */
-.powerflow-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* center label and graph horizontally */
+.switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 26px;
+}
+
+.switch:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+/* ON state */
+.toggle-switch input:checked + .switch {
+  background-color: #2dc391;
+}
+
+.toggle-switch input:checked + .switch:before {
+  transform: translateX(24px);
+}
+
+/* Sub-item below a setting (like current time) */
+.setting-subitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.setting-subitem span:first-child {
+  font-weight: 600;
+}
+
+#timeValue {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem;
+  color: #000000;
+}
+
+.manual-time {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.manual-time-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.manual-time-inputs input {
+  font-size: 1.1rem;
+  width: 55px;
+  text-align: center;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -moz-appearance: textfield;
+}
+
+.manual-time-inputs input::-webkit-outer-spin-button,
+.manual-time-inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.manual-time-inputs button {
+  padding: 10px 18px;      /* bigger padding */
+  font-size: 1.1rem;       /* larger text */
+  min-width: 90px;         /* consistent width */
+  border: none;
+  background-color: #2dc391;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-left: 12px;  /* align button to the right */
+}
+
+.manual-time-inputs button:hover {
+  background-color: #28a07e;
+  transform: scale(1.05);  /* slight grow on hover */
+}
+
+.wifi-settings {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.wifi-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wifi-inputs input {
+  font-size: 1.1rem;
+  height: 32px;           /* match manual time input height */
+  padding: 4px 8px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;                /* take remaining horizontal space */
+}
+
+.wifi-inputs button {
+  padding: 10px 18px;      /* same as manual time button */
+  font-size: 1.1rem;
+  border: none;
+  background-color: #2dc391;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-left: 12px;  /* space from input */
+}
+
+.wifi-inputs button:hover {
+  background-color: #28a07e;
+  transform: scale(1.05);
+}
+
+.wifi-inputs select,
+.wifi-inputs input[type="text"],
+.wifi-inputs input[type="password"] {
+  font-size: 1.1rem;
+  height: 36px;       /* same height as manual time inputs */
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.wifi-inputs button {
+  padding: 0 18px;
+  font-size: 1.1rem;
+  min-width: 90px;
+  height: 36px;       /* same height as dropdown */
+  border: none;
+  background-color: #2dc391;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.wifi-inputs button:hover {
+  background-color: #28a07e;
+  transform: scale(1.05);
 }
